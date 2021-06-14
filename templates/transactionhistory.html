@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Transaction History</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+    <h1 align="center">Transaction History</h1>
+    <hr>
+    <table class="table table-success table-bordered table-hover">
+        <thead class="thead-dark">
+         <tr align="center">
+             <th colspan="2">Sender</th>
+             <th colspan="2">Reciever</th>
+             <th rowspan="2" class="align-middle">Ammount Transfered</th>
+             <th colspan="2">Updated Balance</th>
+             <th rowspan="2" class="align-middle">Date & Time</th>
+         </tr>
+         <tr align="center">
+            <th class="align-middle">Acc No</th>
+            <th class="align-middle">Name</th>
+            <th class="align-middle">Acc No</th>
+            <th class="align-middle">Name</th>
+            <th class="align-middle">Sender</th>
+            <th class="align-middle">Reciever</th>
+         </tr>
+        </thead>
+        <tbody>
+            {% for c in transfer %}
+            <tr align="center">
+             <td>{{ c.Acc_No }}</td>
+             <td>{{ c.sender_name }}</td>
+             <td>{{ c.acc_no_of_reciever }}</td>
+             <td>{{ c.reciever_name }}</td>
+             <td>{{ c.amount_transferred }}</td>
+             <td>{{ c.updated_balance_of_sender }}</td>
+             <td>{{ c.updated_balance_of_reciever }}</td>
+             <td>{{ c.Date_Time }}</td>
+             
+             
+            </tr>
+            {% endfor %}
+        </tbody>
+     </table>
+</div>
+{% endblock content %}

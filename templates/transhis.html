@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Soft Bank</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 class="pb-4" align="center">Transaction History</h1>
+    <div class="col-md-4">
+        <h3>Reciever : {{ Acc_Sender }}</h3>
+        {% for c in reciever %}        
+            <h3><b>Account Holder</b> : {{ c.Acc_Holder }}</h3>
+            <h3><b>E-mail</b> : {{ c.Email_Id }}</h3>
+            <h3>Current Balance : {{ c.Current_Balance }}</h3>
+        {% endfor %}
+    </div>
+{% endblock content %}

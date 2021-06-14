@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Transactions</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="row mx-auto">
+    <div class="col-md-4">
+        <h2 class="pb-4">Sender: {{ Acc_No }}</h2>
+        {% for c in sender %}        
+        
+            <h3>Account Holder : {{ c.Acc_Holder }}</h3>
+            <h3>E-mail : {{ c.Email_Id }}</h3>
+            <h3>Current Balance : {{ c.Current_Balance }}</h3>
+        {% endfor %}
+    </div>
+    <div class="col-md-7">
+        <h2 class="pb-4">Reciever Details:</h2>
+        
+            <form action="/Bank/transhis/" method="POST">{% csrf_token %}
+                <input type="hidden" name="sender_acc_no" value= {{Acc_No}} >
+            <div class="form-group">
+                  <label class="font-weight-bold" >Recievers Account Number:</label>
+                  <input class="form-control" type='text' name='reciever_acc_no' placeholder="Enter the Reciever's Account Number" />
+                  {% if car %}
+                  <div class="alert alert-danger" role="alert">
+                    Sender and Reciever cannot be same!!!!
+                  </div>
+                  {% endif %}
+            </div>
+            <div class="form-group">
+                  <label class="font-weight-bold" for="Amount">Amount:</label>
+                  <input class="form-control" name='amount_to_transfer' placeholder="Enter the Ammount Here">
+            
+                  {% if flag %}
+                  <div class="alert alert-danger" role="alert">
+                    Insufficient Balance!!!!
+                  </div>
+                  {% endif %}
+            
+            </div>
+                <input class="btn btn-success" type="Submit" value="Transfer">
+            </form>
+    </div>
+</div>
+
+{% endblock content %}

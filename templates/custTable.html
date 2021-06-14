@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Customer Table</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 align="center">All Customer Table</h1>
+    <div class="container-fluid mt-3">
+        <hr>
+        <table class="table table-bordered table-hover table-success">
+           <thead class="thead-dark">
+            <tr align="center">
+                <th>Account No.</th>
+                <th>Account Holder</th>
+                <th>Email Id</th>
+                <th>Account Balance</th>
+                <th>Transfer</th>
+            </tr>
+           </thead>
+           <tbody>
+               {% for c in customer %}
+               <tr align="center">
+                <td>{{ c.Acc_No }}</td>
+                <td>{{ c.Acc_Holder  }}</td>
+                <td>{{ c.Email_Id }}</td>
+                <td>{{ c.Current_Balance }}</td>
+                <td><a href="{% url 'trans' c.Acc_No %}" class="btn btn-primary">Transfer</a></td>
+               </tr>
+               {% endfor %}
+           </tbody>
+        </table>
+    </div>
+{% endblock content %}
