@@ -1,46 +1,77 @@
 {% extends 'base.html' %}
 {% block title %}
-    <title>Transaction History</title>
+<title>Transaction History</title>
 {% endblock title %}
-
+{% load static %}
 {% block content %}
-<div class="container-fluid mt-3">
-    <h1 align="center">Transaction History</h1>
-    <hr>
-    <table class="table table-success table-bordered table-hover">
+<br>
+<br>
+<br>
+<br>
+
+<style>
+    body {
+        background-image: url('{% static 'images/back.jpg' %}');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: top;
+    }
+
+    table {
+        opacity: 0.95;
+    }
+
+    .sad {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+        width: 45%;
+        background-color: rgba(48, 46, 58, 0.75);
+        border-radius: 10px;
+        color: white;
+        font-size: 3vw;
+    }
+</style>
+<div class="pt-3" align="center">
+    <h1 class="sad">Transaction History</h1>
+</div>
+<hr>
+<div class="container-fluid mt-3 px-5">
+    <table class="table table-success table-bordered table-hover shadow p-3 mb-5 bg-white rounded">
         <thead class="thead-dark">
-         <tr align="center">
-             <th colspan="2">Sender</th>
-             <th colspan="2">Reciever</th>
-             <th rowspan="2" class="align-middle">Ammount Transfered</th>
-             <th colspan="2">Updated Balance</th>
-             <th rowspan="2" class="align-middle">Date & Time</th>
-         </tr>
-         <tr align="center">
-            <th class="align-middle">Acc No</th>
-            <th class="align-middle">Name</th>
-            <th class="align-middle">Acc No</th>
-            <th class="align-middle">Name</th>
-            <th class="align-middle">Sender</th>
-            <th class="align-middle">Reciever</th>
-         </tr>
+            <tr align="center">
+                <th colspan="2">Sender</th>
+                <th colspan="2">Reciever</th>
+                <th rowspan="2" class="align-middle">Ammount Transfered</th>
+                <th colspan="2">Updated Balance</th>
+                <th rowspan="2" class="align-middle">Date & Time</th>
+            </tr>
+            <tr align="center">
+                <th class="align-middle">Acc No</th>
+                <th class="align-middle">Name</th>
+                <th class="align-middle">Acc No</th>
+                <th class="align-middle">Name</th>
+                <th class="align-middle">Sender</th>
+                <th class="align-middle">Reciever</th>
+            </tr>
         </thead>
         <tbody>
             {% for c in transfer %}
             <tr align="center">
-             <td>{{ c.Acc_No }}</td>
-             <td>{{ c.sender_name }}</td>
-             <td>{{ c.acc_no_of_reciever }}</td>
-             <td>{{ c.reciever_name }}</td>
-             <td>{{ c.amount_transferred }}</td>
-             <td>{{ c.updated_balance_of_sender }}</td>
-             <td>{{ c.updated_balance_of_reciever }}</td>
-             <td>{{ c.Date_Time }}</td>
-             
-             
+                <td>{{ c.Acc_No }}</td>
+                <td>{{ c.sender_name }}</td>
+                <td>{{ c.acc_no_of_reciever }}</td>
+                <td>{{ c.reciever_name }}</td>
+                <td>{{ c.amount_transferred }}</td>
+                <td>{{ c.updated_balance_of_sender }}</td>
+                <td>{{ c.updated_balance_of_reciever }}</td>
+                <td>{{ c.Date_Time }}</td>
+
+
             </tr>
             {% endfor %}
         </tbody>
-     </table>
+    </table>
 </div>
 {% endblock content %}

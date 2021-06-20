@@ -6,7 +6,7 @@ def index(request):
     return render(request, "home.html")
 
 def custTable(request):
-    customer = Customer.objects.all()
+    customer = Customer.objects.all().order_by('Acc_No')
     return render(request, "custTable.html", {'customer': customer})
 
 def trans(request, Acc):
@@ -53,10 +53,10 @@ def update_bal_req(request):
                 sender_nam = b.Acc_Holder
                 b.save()
             
-            sender = Customer.objects.get(Acc_No=Acc_Sender)
+            sender = Customer.objects.get(Acc_No = Acc_Sender)
             tsac=Transfer.objects.create(Acc_No = sender, amount_transferred=Amt_Transfer, acc_no_of_reciever=Acc_Reciever, updated_balance_of_reciever=amt_cre, updated_balance_of_sender=amt_deb, sender_name=sender_nam, reciever_name=reciever_nam)
 
-            customer = Customer.objects.all()
+            customer = Customer.objects.all().order_by('Acc_No')
             context = {'car':car, 'flag':flag, 'customer':customer}
             return render(request, "custTable.html", context)
     else:

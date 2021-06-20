@@ -1,11 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    <title>Soft Bank Home</title>
+<title>Soft Bank Home</title>
 {% endblock title %}
 
 {% block content %}
-    <div style="background: url('{{ STATIC_URL }}static/bank.jpg') no-repeat;">
-        <h1>Home page</h1>
-    </div>
+<br>
+<br>
+<br>
+<br>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+    body {
+        background-image: url('{% static 'images/bankor.jpg' %}');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: bottom;
+    }
+
+    .box {
+        padding-top: 30px;
+        padding-left: 200px;
+        font-size: 70px;
+        color: white;
+        font-family: 'Righteous', cursive;
+        text-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    }
+
+    .but {
+        padding-left: 150px;
+        padding-top: 150px;
+    }
+</style>
+
+<div>
+    <h1 class="box">Welcome,</h1>
+</div>
+
+<div class="container align-middle but">
+    <a href="{% url 'cust' %}" class="btn btn-success" style="font-size: 30px; ali">Start Transaction</a>
+</div>
+
 {% endblock content %}

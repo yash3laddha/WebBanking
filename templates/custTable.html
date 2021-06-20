@@ -1,14 +1,45 @@
 {% extends 'base.html' %}
 {% block title %}
-    <title>Customer Table</title>
+<title>Customer Table</title>
 {% endblock title %}
-
+{% load static %}
 {% block content %}
-    <h1 align="center">All Customer Table</h1>
-    <div class="container-fluid mt-3">
-        <hr>
-        <table class="table table-bordered table-hover table-success">
-           <thead class="thead-dark">
+<style>
+    body {
+        background-image: url('{% static 'images/back.jpg' %}');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: top;
+    }
+
+    table {
+        opacity: 0.95;
+    }
+
+    .sad {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+        width: 45%;
+        background-color: rgba(48, 46, 58, 0.75);
+        border-radius: 10px;
+        color: white;
+        font-size: 3vw;
+    }
+</style>
+<br>
+<br>
+<br>
+<br>
+<div class="pt-3" align="center">
+    <h1 class="sad">All Customer Table</h1>
+</div>
+
+<div class="container-fluid mt-3 px-5">
+    <hr>
+    <table class="table table-bordered table-hover  shadow p-3 mb-5 bg-white rounded">
+        <thead class="thead-dark">
             <tr align="center">
                 <th>Account No.</th>
                 <th>Account Holder</th>
@@ -16,18 +47,18 @@
                 <th>Account Balance</th>
                 <th>Transfer</th>
             </tr>
-           </thead>
-           <tbody>
-               {% for c in customer %}
-               <tr align="center">
+        </thead>
+        <tbody>
+            {% for c in customer %}
+            <tr align="center">
                 <td>{{ c.Acc_No }}</td>
-                <td>{{ c.Acc_Holder  }}</td>
+                <td>{{ c.Acc_Holder }}</td>
                 <td>{{ c.Email_Id }}</td>
                 <td>{{ c.Current_Balance }}</td>
                 <td><a href="{% url 'trans' c.Acc_No %}" class="btn btn-primary">Transfer</a></td>
-               </tr>
-               {% endfor %}
-           </tbody>
-        </table>
-    </div>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock content %}
